@@ -1,36 +1,42 @@
-🌤️ Weather ETL Pipeline
-An automated data pipeline orchestrating real-time weather data extraction from the OpenWeatherMap API into an AWS RDS PostgreSQL instance.
+# 🌤️ Weather ETL Pipeline
+[![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/)
+[![Airflow 2.9.2](https://img.shields.io/badge/Airflow-2.9.2-017CEE?logo=apache-airflow&logoColor=white)](https://airflow.apache.org/)
+[![AWS RDS](https://img.shields.io/badge/AWS_RDS-PostgreSQL-FF9900?logo=amazon-aws&logoColor=white)](https://aws.amazon.com/rds/)
+[![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?logo=docker&logoColor=white)](https://www.docker.com/)
 
-🚀 Overview
-This project demonstrates a production-ready ETL workflow orchestrated by Apache Airflow. It is fully containerized using Docker Compose to ensure a consistent environment for data extraction, transformation, and cloud loading.
+An automated, containerized data pipeline that orchestrates real-time weather data extraction from the OpenWeatherMap API into an AWS RDS PostgreSQL instance.
 
-Key Features
-Extraction: Automated calls to OpenWeatherMap API for localized data.
+---
 
-Transformation: Data cleaning and schema mapping using Python and Pandas.
+## 🚀 Overview
+This project demonstrates a production-grade ETL (Extract, Transform, Load) workflow orchestrated by **Apache Airflow**. By utilizing **Docker Compose**, the entire environment is easily reproducible, ensuring consistent data processing from API to Cloud Storage.
 
-Loading: Secure storage and "upsert" operations in a remote AWS RDS (PostgreSQL) database.
 
-🛠️ Tech Stack
-Orchestration: Apache Airflow 2.9.2
+### ✨ Key Features
+* **Automated Extraction:** Scheduled pulls from OpenWeatherMap API for localized data.
+* **Data Transformation:** Schema mapping and data cleaning using Python and Pandas.
+* **Cloud Integration:** Secure data loading and "upsert" operations into **AWS RDS**.
+* **Monitoring:** Integrated logging and task status tracking via the Airflow UI.
 
-Language: Python 3.12
+---
 
-Database: AWS RDS (PostgreSQL 16)
+## 🛠️ Tech Stack
+* **Orchestration:** Apache Airflow 2.9.2 (Dockerized)
+* **Language:** Python 3.12
+* **Database:** AWS RDS (PostgreSQL 16)
+* **Infrastructure:** Docker & Docker Compose
 
-Infrastructure: Docker & Docker Compose
+---
 
-📁 Project Structure
-
+## 📁 Project Structure
+```text
 WEATHER_PROJECT/
-├── dags/               # Airflow DAG (weather_etl.py)
-├── sql/                # SQL schema (weather_schema.pgsql)
-├── src/                # ETL logic (pipeline.py, util_db.py)
+├── dags/               # Airflow DAG logic (weather_etl.py)
+├── sql/                # SQL schema definitions (weather_schema.pgsql)
+├── src/                # Core ETL logic (pipeline.py, util_db.py)
 ├── docker-compose.yml  # Container orchestration
 ├── requirements.txt    # Python dependencies
-└── .env                # Local secrets (not tracked in Git)
-⚙️ Quick Start
-Clone the Repo: git clone <your-repo-url>
+└── .env                # Local credentials (not tracked)
 
 Environment Setup: Create a .env file with your PG_HOST, PG_USER, and PG_PASSWORD.
 
